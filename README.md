@@ -1,3 +1,12 @@
+# Tattler
+
+Tattler is a simple version of Twitter. It contains news, profiles with auth and password.
+
+##
+This is my first NextJS project. To learn about this technology I used the following link:
+https://www.youtube.com/watch?v=wm5gMKuwSYk
+So, this Tattler app is inspired by project from video above. 
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
