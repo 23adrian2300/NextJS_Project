@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import { signIn, signOut, useSession, getProviders } from 'next-auth/react';
 
 
-const Nav = () => {
+const Navbar = () => {
     const { data: session } = useSession();
     const [providers, setProviders] = useState(null);
 
@@ -43,7 +43,7 @@ const Nav = () => {
                         </button>
 
                         <Link href='/profile'>
-                            <Image src='/assets/images/logo.svg'
+                            <Image src={session?.user.image}
                                 width={35}
                                 height={35}
                                 className='rounded-full'
@@ -66,7 +66,7 @@ const Nav = () => {
             <div className='sm:hidden flex relative'>
                 {session?.user ? (
                     <div className='flex'>
-                        <Image src='/assets/images/logo.svg'
+                        <Image src={session?.user.image}
                             width={35}
                             height={35}
                             className='rounded-full'
@@ -115,4 +115,4 @@ const Nav = () => {
     )
 }
 
-export default Nav
+export default Navbar
