@@ -1,13 +1,12 @@
-import { connnectToDB } from '@utils/database'
+import { connectToDB } from '@utils/database'
 import Tattle from '@models/tattle'
+
 export const POST = async (req) => {
     const { userId, tattle, tag } = await req.json();
-
-
     try {
-        await connnectToDB();
+        await connectToDB();
         const newTattle = new Tattle({
-            creator: userId, 
+            creator: userId,
             tattle,
             tag
         })
@@ -17,6 +16,6 @@ export const POST = async (req) => {
         return new Response(JSON.stringify(newTattle), { status: 201 })
 
     } catch (error) {
-
+        return new Response("Failed to create new tattle", { status: 500 });
     }
 }

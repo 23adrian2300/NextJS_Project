@@ -2,20 +2,21 @@
 import { useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-
 import Form from "@components/Form"
 
 
 const CreateTattle = () => {
+    const router = useRouter();
+    const { data: session } = useSession();
+
     const [submitting, setSubmitting] = useState(false);
     const [post, setPost] = useState({
         tattle: "",
         tag: "",
-    })
+    });
 
     const createTattle = async (e) => {
-        e.prevendDefault();
-
+        e.preventDefault();
         setSubmitting(true);
 
         try {
@@ -27,27 +28,31 @@ const CreateTattle = () => {
                     tag: post.tag
                 }),
             })
+            
             if (response.ok) {
                 router.push('/');
             }
         }
 
         catch (error) {
-        console.log(error);
-    }
+            console.log(error);
+        }
         finally {
-            setSubmitting(false);}
+            setSubmitting(false);
+        }
 
-}
+    }
 
-return (
-    <Form
-        type='Create'
-        post={post}
-        setPost={setPost}
-        submitting={submitting}
-        handleSubmit={createTattle}></Form>
-)
+    return (
+        <Form
+            type='Create'
+            post={post}
+            setPost={setPost}
+            submitting={submitting}
+            handleSubmit={createTattle}>
+
+        </Form>
+    )
 }
 
 export default CreateTattle

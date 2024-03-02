@@ -34,7 +34,7 @@ const Navbar = () => {
             </Link>
             <div className='sm:flex hidden'>
                 {session?.user ? (
-                    <div class="flex gap-3 md:gap-5">
+                    <div className="flex gap-3 md:gap-5">
                         <Link href='create-tattle' className='black_btn'>
                             Create Tattle
                         </Link>

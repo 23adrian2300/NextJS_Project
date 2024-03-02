@@ -9,6 +9,9 @@ const handler = NextAuth({
         GoogleProvider({
             clientId: process.env.GOOGLE_ID,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+            httpOptions: {
+                timeout: 40000, // added timeout because of the slow response from google
+            },
         })
 
     ],
@@ -32,7 +35,7 @@ const handler = NextAuth({
                 if (!userExists) {
                     await User.create({
                         email: profile.email,
-                        username: profile.name.replace(" ", "").toLowerCase(),
+                        username: profile.name.replace(/[^a-zA-Z0-9]/g, "").toLowerCase(),
                         iamge: profile.picture
                     })
                 }
