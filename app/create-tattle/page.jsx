@@ -50,7 +50,6 @@ const CreateTattle = () => {
             setPost={setPost}
             submitting={submitting}
             handleSubmit={createTattle}>
-
         </Form>
     )
 }
