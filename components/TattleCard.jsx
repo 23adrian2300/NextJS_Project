@@ -18,10 +18,17 @@ const TattleCard = ({post, handleTagClick, handleEdit, handleDelete}) => {
         }, 4000);
     }
 
+    const handleProfileClick = () => {
+        if (post.creator._id === session?.user.id) return router.push("/profile");
+        router.push(`/profile/${post.creator._id}?name=${post.creator.username}`);
+    }
+
+
   return (
     <div className='tattle_card'>
         <div className='flex justify-between items-start gap-5'>
-            <div className='flex-1 flex justify-start items-center gap-3 cursor-pointer'>
+            <div className='flex-1 flex justify-start items-center gap-3 cursor-pointer'
+            onClick ={handleProfileClick}>
                 <Image
                 alt= "user_image"
                 width={30}
@@ -41,15 +48,17 @@ const TattleCard = ({post, handleTagClick, handleEdit, handleDelete}) => {
             </div>
             <div className='copy_btn' onClick={handleCopy}>
                 <Image
-                src = {copied === post.tattle ? 'assets/tick.svg'
-            : 'assets/copy.svg'}
-            width={15}
-            height={15}></Image>
+                src = {copied === post.tattle ? '/assets/tick.svg' : '/assets/copy.svg'}
+                alt = {copied === post.tattle ? 'tick_icon' : 'copy_icon'}
+                width={15}
+                height={15}>
+            </Image>
             </div>
         </div>
         <p className='my-4 font-satoshi text-sm text-gray-700'>{post.tattle}</p>
         <p className='font-inter text-sm blue_gradient cursor-pointer'
         onClick={() => handleTagClick && handleTagClick (post.tag)}>#{post.tag}</p>
+
         {session?.user.id === post.creator._id && pathName === '/profile' && (
             <div className='mt-5 flex-center gap-4 border-t border-gray-100 pt-3'>
                 <p className='font-inter font-black text-sm green_gradient cursor-pointer'

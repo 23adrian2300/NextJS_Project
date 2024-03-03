@@ -6,7 +6,7 @@ const Profile = ({name, desc, data, handleEdit, handleDelete}) => {
         <h1 className='head_text text-left'>
             <span className='blue_gradient'>{name} Profile</span></h1>
             <p className='desc text-left'>{desc}</p>
-            <div className='mt-1 tattle_layout'>
+            <div className='mt-10 tattle_layout'>
             {data.map((post) => (
                 <TattleCard
                     key={post._id}
