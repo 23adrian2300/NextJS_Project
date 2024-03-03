@@ -1,6 +1,13 @@
 # Tattler
-2:05:24
+
 Tattler is a simple version of Twitter. It contains news, profiles with auth and password.
+
+# What I want to add?
+- Searching
+- view for profiles
+- click on tag
+- maybe chat to user
+
 
 ##
 This is my first NextJS project. To learn about this technology I used the following link:
